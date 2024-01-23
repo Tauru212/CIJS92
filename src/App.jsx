@@ -1,22 +1,66 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 
-import Button from './component/Button'
-const ParentComponent = () => {
+const App = () => {
+
+  // let [person, setPerson] =  useState({
+  //   name: "mindX",
+  //   age: 23,
+  // })
+
+  // const ChangeName = () => {
+  //   let name = prompt("Enter Name: ");
+  //   setPerson({...person, name});
+  // }
+
+  // const ChangeAge = () =>{
+  //   let age = prompt("Enter Age: ");
+  //   setPerson({...person, age});
+  // }
+
+  // return (
+  //   <div>
+  //     <h1>{person.name}</h1>
+  //     <h1>{person.age}</h1>
+  //     <button onClick={ChangeName}>Change name</button>
+  //     <button onClick={ChangeAge}>Change age</button>
+  //   </div>
+  // );
+
+
+    let [infor, setInfor] = useState({name:'', age:''})
+    const onClick = ()=>{
+        let name =window.prompt("Nhập tên: ");
+       
+        while (!name) {
+          alert('Bạn chưa nhập tên');
+          name = window.prompt('Nhập lại tên:'); 
+        }
+        let age = window.prompt("Nhập tuổi: ");
+        while (!age) {
+          alert('Bạn chưa nhập tuổi');
+          name = window.prompt('Nhập lại tên:'); 
+          age = window.prompt('Nhập lại tuổi:'); 
+        }
+        
+        setInfor({ name, age });
+
+    }
+  
+  // let age = prompt("Enter Age: ");
+
+
   return (
-    
-    <div className='Container'>
-      <div className="btn-left">
-      <Button text='Button 1'  />
-      <Button text='Button 2'/>
-      <Button text='Button 3' />
-      <Button text='Button 4'/>
-      </div>
+    <div>
+      <button onClick={onClick}>Click me?</button>
+      <p>Name:{infor.name}</p>
+      <p>Age:{infor.age}</p>
+
     </div>
-    
   );
 };
 
-export default ParentComponent;
+
+
+export default App;
