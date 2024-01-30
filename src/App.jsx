@@ -4,60 +4,39 @@ import viteLogo from '/vite.svg'
 
 const App = () => {
 
-  // let [person, setPerson] =  useState({
-  //   name: "mindX",
-  //   age: 23,
-  // })
+  const [value, setValue] = useState("");
+  const [child, setChild] = useState([])
 
-  // const ChangeName = () => {
-  //   let name = prompt("Enter Name: ");
-  //   setPerson({...person, name});
-  // }
-
-  // const ChangeAge = () =>{
-  //   let age = prompt("Enter Age: ");
-  //   setPerson({...person, age});
-  // }
-
-  // return (
-  //   <div>
-  //     <h1>{person.name}</h1>
-  //     <h1>{person.age}</h1>
-  //     <button onClick={ChangeName}>Change name</button>
-  //     <button onClick={ChangeAge}>Change age</button>
-  //   </div>
-  // );
-
-
-    let [infor, setInfor] = useState({name:'', age:''})
-    const onClick = ()=>{
-        let name =window.prompt("Nhập tên: ");
-       
-        while (!name) {
-          alert('Bạn chưa nhập tên');
-          name = window.prompt('Nhập lại tên:'); 
-        }
-        let age = window.prompt("Nhập tuổi: ");
-        while (!age) {
-          alert('Bạn chưa nhập tuổi');
-          name = window.prompt('Nhập lại tên:'); 
-          age = window.prompt('Nhập lại tuổi:'); 
-        }
-        
-        setInfor({ name, age });
-
+  const handleAddTodo = () =>{
+    if(!value){
+      alert('Vui long nhap gia tri!')
+      return;
     }
-  
-  // let age = prompt("Enter Age: ");
 
+    setChild([...child, value]);
+    alert('Nhap gia tri thanh cong');
+    setValue(" ")
+  };
+
+  console.log(value);
 
   return (
     <div>
-      <button onClick={onClick}>Click me?</button>
-      <p>Name:{infor.name}</p>
-      <p>Age:{infor.age}</p>
+      <h1>Tinder</h1>
 
+      <div>
+        <input type="text" value={value} onChange={(e) => setValue(e.target.value)}/>
+        <button onClick={handleAddTodo}>Add</button>
+      </div>
+
+      <div>
+        {child.map((childs) => (
+          <h3>{childs}</h3>
+        ))}
+      </div>
+      
     </div>
+
   );
 };
 
